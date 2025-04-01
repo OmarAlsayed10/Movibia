@@ -1,0 +1,67 @@
+
+.wrapper-container{
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 50px;
+    height: auto;
+}
+
+.wrapper{
+    z-index: -10;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5));
+    filter: blur(20px);
+}
+
+.image-card img{
+    width: 60%;
+    border-radius: 10px;
+      box-shadow: 0 4px 15px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.truncate-2-lines{
+    overflow: hidden;
+   display: -webkit-box;
+   -webkit-line-clamp: 4;
+   -webkit-box-orient: vertical;
+
+}
+
+.movie-card{
+    transition: transform 0.3s ease-in-out;
+}
+
+.movie-card:hover {
+    transform: scale(1.01);
+}
+
+/* .active{
+    color: blue !important;
+} */
+
+
+.movie-card:hover .card-back{
+    opacity: 1 !important;
+}
+
+.movies-container{
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: "touch";
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.movies-container::-webkit-scrollbar{
+    display: none;
+}
+
+
+
+
+
