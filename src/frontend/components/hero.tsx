@@ -1,9 +1,15 @@
 import { Box, Button, Container, Link, Typography } from "@mui/material";
+import {useSelector} from "react-redux";
+import {RootState} from "../redux/store/store";
 
 
 
 
 const Hero = () => {
+
+    const {loggedIn} = useSelector((state:RootState)=>state.user)
+
+
     return (
         <>
     <Container maxWidth="xl" sx={{height:"100vh",position:"relative",top:"-100px"}}>
@@ -42,7 +48,13 @@ const Hero = () => {
         >
         <Typography variant="h4" sx={{fontWeight:"bold"}}>Pay less , watch more</Typography>
         <Typography sx={{fontWeight:"100",width:"60%",padding:"20px 0"}}>Stream over 10,000 movies and TV shows across all genres in high quality, ad-free. Enjoy seamless access anytime, anywhere, with personalized recommendations</Typography>
+        
+        {!loggedIn ? (
         <Button variant="contained" color="primary"><Link underline="none" color="white" href="/signup">Sign up</Link></Button>
+        ):(
+            <Button variant="contained" color="primary"><Link underline="none" color="white" href="/browse">Browse now</Link></Button>
+        )
+    }
         </Box>
         </Container>
         </>

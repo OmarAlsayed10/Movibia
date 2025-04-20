@@ -20,7 +20,7 @@ const Footer = () => {
         <Box textAlign="center" mb={3}>
           <Link  href="/" sx={{ textDecoration: "none", color: "white", fontWeight: "bold" }}>
           <Typography variant="h3">
-            Logo
+            Movibia
           </Typography>
           </Link>
         </Box>
@@ -28,7 +28,7 @@ const Footer = () => {
         <Box display="flex" justifyContent="center" gap="50px" marginBottom="40px">
           <Box display="flex" flexDirection="column" gap="10px" alignItems="start">
           <Typography  sx={{fontSize:"20px"}}>Company</Typography>
-          <Link href="/contact" sx={{textDecoration:"none",color:"rgba(255,255,255,0.7)" , fontSize:"13px"}}>About</Link>
+          <Link href="/about" sx={{textDecoration:"none",color:"rgba(255,255,255,0.7)" , fontSize:"13px"}}>About</Link>
           <Link href="/contact" sx={{textDecoration:"none",color:"rgba(255,255,255,0.7)" , fontSize:"13px"}}>Partners</Link>         
           </Box>
           <Box display="flex" flexDirection="column" gap="10px" alignItems="start">

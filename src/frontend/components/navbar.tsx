@@ -1,6 +1,44 @@
-import { Avatar, Box, Button, Link } from "@mui/material";
+import { Avatar, Box, Button, Link, Menu, MenuItem} from "@mui/material";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../redux/store/store";
+import { fetchByEmail,handleLogOutstate } from "../redux/slices/userSlice";
+import { useNavigate } from "react-router-dom";
+import SearchIcon from '@mui/icons-material/Search';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 const Navbar = () => {
+
+    const dispatch: AppDispatch = useDispatch()
+    const navigate=useNavigate()
+    const {loggedIn} = useSelector((state:RootState)=>state.user)
+    const [anchorEl,setAnchorEl]=useState<null|HTMLElement>(null)
+    const open = Boolean(anchorEl)
+
+    useEffect(()=>{
+      const email = localStorage.getItem("email")
+      if(email){
+        dispatch(fetchByEmail(email))
+      }
+      else{
+        console.log("user not found")
+      }
+    },[dispatch])
+
+    const handleLogOut=()=>{
+      dispatch(handleLogOutstate())
+      navigate("/")
+    }
+
+    const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+      setAnchorEl(event.currentTarget);
+    };
+
+    const handleClose = ()=>{
+      
+      setAnchorEl(null)
+    }
+
     return (
         <>
   
@@ -14,22 +52,7 @@ const Navbar = () => {
             <span className="navbar-toggler-icon" style={{filter:"invert(1)"}}></span>
           </Button>
           <div className="collapse navbar-collapse ps-0 ps-lg-2" id="navbarSupportedContent">
-          {/* <form className="position-relative d-flex justify-content-end">
-              <input className="form-control me-2 my-3 my-lg-0 me-0 me-lg-5"
-               style={{    background:" rgba(255, 255, 255, 0.2)",
-                color: "white",
-                border: "none",
-                padding: "8px 15px",
-                borderRadius: "20px",
-                outline: "none",
-                width:"300px",
-                height:"30px",
-                transition: "all 0.3s ease-in-out",}}
-               type="search"
-               placeholder="Search"
-               aria-label="Search"
-               />
-            </form> */}
+        
             <ul className="navbar-nav me-auto mb-2 mb-lg-0 d-flex gap-lg-3 gap-xl-5 gap-3 ps-0 ps-lg-4 ps-xl-5 ms-xl-5">
               
                 <Link underline="none" color="white" aria-current="page" href="/">Home</Link>
@@ -38,36 +61,53 @@ const Navbar = () => {
                 <Link underline="none" color="white" href="/tvshows">Tv Shows</Link>
                 <Link underline="none" color="white" href="/kids">kids</Link>
             </ul>
-            <div className="d-flex ps-0 ps-lg-2 pt-3 pt-lg-0 align-items-center">
+            <Box sx={{display:"flex",alignItems:"center"}}>
 
             <Avatar
              sx={{width:"20px",
              height:"20px",
              background:"transparent",
              fontSize:"15px",
-             cursor:"pointer",
-             
+             cursor:"pointer" ,            
              }}>
-              <i className="text-white bi bi-search top-0 fw-ligher"></i> 
+              <SearchIcon/>
               </Avatar>
-              <Avatar sx={{
-                 width:"20px",
-                  height:"20px",
-                  background:"transparent",
-                  fontSize:"17px",
-                  margin:"0 15px",
-                  cursor:"pointer",
-              }}><i className="bi bi-bookmark text-white"></i>
-              </Avatar >
+             
 
+          
+              { loggedIn ? (
+                <Box sx={{paddingLeft:"20px"}}>
               <Box>
-                <Box sx={{display:"flex" , flexDirection:"column",alignItems:"center",margin:"5px"}}>
-                <Avatar></Avatar>
-                </Box>
-               <Button className="d-none" variant="outlined" sx={{color:'white'}}> <Link underline="none" href="/login"> sign in</Link> </Button>
+                <Avatar sx={{ cursor: "pointer" }} onClick={handleClick}>
+                </Avatar>
+                <Menu
+                 anchorEl={anchorEl}
+                 open={open}
+                 onClose={handleClose}
+                 disableScrollLock
+                 >
+                  <MenuItem sx={{display:"flex",gap:"20px"}}>
+                    Welcome {localStorage.getItem("username")}
+                  <Button sx={{minWidth: 'auto', "&:hover": {backgroundColor: "none"},color:"white", backgroundColor:"rgb(37, 37, 44)",borderRadius:"5px",padding:"5px 10px"}} onClick={handleLogOut}>
+                    <LogoutIcon/>
+                    </Button>
+                  </MenuItem>
+                  <MenuItem>
+                <Link sx={{width:"100%"}} underline="none" color="black" href="/bookmarks">bookmarks</Link>
+                  </MenuItem>
+                  
+                </Menu>
               </Box>
+              </Box>
+            ) : (
+              <Button sx={{ marginLeft:"20px"}} href="/login" variant="outlined">
+                <Link underline="none" sx={{ color: "white"}}>Sign In</Link>
+              </Button>
+            )}
+          
               
-            </div>
+              
+            </Box>
           </div>
         </div>
       </nav>

@@ -16,6 +16,8 @@ import Login from './frontend/pages/login';
 import Register from './frontend/pages/register';
 import { ThemeProvider } from '@mui/material';
 import theme from './frontend/theme';
+import Bookmarks from './frontend/pages/bookmarks';
+
 
 function App() {
   const routes = createBrowserRouter([
@@ -30,6 +32,7 @@ function App() {
         { path: "/movie/:id", element: <MovieDetails /> },
         { path: "/login", element: <Login /> },
         { path: "/signup", element: <Register /> },
+        { path: "/bookmarks", element: <Bookmarks /> },
         { path: "*", element: <Error /> }
       ],
     },

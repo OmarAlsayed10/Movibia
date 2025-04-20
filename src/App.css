@@ -1,6 +1,10 @@
 body{
     background-color: rgb(24, 24, 31);
+      padding-right: 0px !important;
+      
 }
+
+
 
 
 .gradient-container {

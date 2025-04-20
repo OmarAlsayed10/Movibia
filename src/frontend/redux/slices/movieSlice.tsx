@@ -10,7 +10,7 @@ export const movieAction = createAsyncThunk("movie/getAll",async()=>{
 
 const movieSlice = createSlice({
     name: "movie",
-    initialState: { movies:[], status:"idle" },
+    initialState: { movies:[], status:"idle" },     
     reducers:{},
     extraReducers: (builder) => {
         builder.addCase(movieAction.fulfilled, (state, action) => {

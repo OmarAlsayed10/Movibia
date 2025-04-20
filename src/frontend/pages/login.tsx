@@ -1,46 +1,55 @@
 import { Alert, Box, Button, Divider, Link, Snackbar, TextField, Typography } from "@mui/material";
 import axios from "axios";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 const Login = () => {
 
-  const [userform , setuserform] = useState({
-    username:"",
+  const [form,setForm] = useState({
+    email:"",
     password:""
   })
 
-    const [success,setsuccess] = useState("")
-    const [error,seterror] = useState("")
-    const [open , setopen] = useState(false)
+  const [open,setOpen] = useState(false)
 
-  const navigate = useNavigate()
+  const [message,setMessage] = useState({text:"",type:"success"})
 
-  const handleChange = (e:React.ChangeEvent<HTMLInputElement>)=>{
-    setuserform({...userform,[e.target.name]:e.target.value})
-  }
+  const handleSubmit= async(e:React.FormEvent)=>{
 
-  const handleSubmit = async (e:React.FormEvent)=>{
     e.preventDefault()
-    setsuccess("")
-    seterror("")
-    
-    try {
-      const res = await axios.post("http://localhost:3000/auth/login",userform)
-      setsuccess(res.data.message)
-      setopen(true)
 
-      setTimeout(() => {
-        navigate("/")
-      }, 3000);
+    try {
+
+     const response= await axios.post("http://localhost:3000/auth/sign-in",form)
+
+      const { token, user } = response.data;
+
+            localStorage.setItem("email", user.email);
+            localStorage.setItem("token", token);
+            localStorage.setItem("username",user.username)
+            localStorage.setItem("id",user.id)
+
+
+      setMessage({text:"you have logged in successfully",type:"success"})  
+
+      setInterval(() => {
+        window.location.href="/"
+      }, 1000);
+      
       
     } catch (error:any) {
-      seterror(error.response.data.error)
-      setopen(true)
+      const errorMessage = error.response?.data?.message || "An error occurred!";
+      setMessage({ text: errorMessage, type: "error" });
     }
-
-   
+    finally{
+      setOpen(true)
+    }
     
+  }
+
+  const handleChange = async(e:React.ChangeEvent<HTMLInputElement>)=>{
+
+    setForm({...form,[e.target.name]:e.target.value})
+
   }
 
   return (
@@ -70,32 +79,31 @@ const Login = () => {
 
 
       <TextField
-        label="username"
+        label="email"
         sx={{margin:"10px 0 "}}
-        name="username"
-        value={userform.username}
+        name="email"
         required
+        value={form.email}
         onChange={handleChange}
       />
       <TextField
         label="password"
         name="password"
-        value={userform.password}
-        required
-        onChange={handleChange}
         sx={{marginTop:"20px "}}
+        required
+        value={form.password}
+        onChange={handleChange}
               />
         <Button variant="contained" sx={{my:"20px" }} onClick={handleSubmit} >Login</Button>
         <Divider sx={{ width: "80%", bgcolor: "white", my: 2 }} />
         <Typography color="white">dont have an account? <Link sx={{fontWeight:"bold"}} href="/signup">Sign up</Link></Typography>
         </Box>
 
-        <Snackbar autoHideDuration={3000} open={open} onClose={()=>setopen(false)}>
-        <Alert severity={error?"error":"success"} sx={{width:"100%"}}>
-          {success||error}
-        </Alert>
-
-        </Snackbar>
+         <Snackbar autoHideDuration={4000} open={open} onClose={() => setOpen(false)}>
+                <Alert severity={message.type as "success" | "error"} sx={{ width: "100%" }}>
+                   {message.text}
+                </Alert>
+                </Snackbar>
     </Box>
   );
 };

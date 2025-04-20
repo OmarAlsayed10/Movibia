@@ -5,44 +5,50 @@ import { useNavigate } from "react-router-dom";
 
 const Register = () => {
 
-  const [userform , setuserform] = useState({
+
+  const navigate = useNavigate()
+
+  const [form,setForm] = useState({
     email:"",
     username:"",
     password:""
   })
 
-  const [success,setsuccess] = useState("")
-  const [error,seterror] = useState("")
-  const [open , setopen] = useState(false)
+  const [open,setOpen] = useState(false)
 
-  const navigate = useNavigate()
+  const [message,setMessage] = useState({text:"",type:"success"})
 
-   const handleChange = (e:React.ChangeEvent<HTMLInputElement>)=>{
+  const handleSubmit= async(e:React.FormEvent)=>{
 
-    setuserform({...userform,[e.target.name]:e.target.value})
-   
-
-   }
-
-   const handleSubmit = async(e:React.FormEvent)=>{
     e.preventDefault()
-    seterror("")
-    setsuccess("")
-    try {
-     const res = await axios.post("http://localhost:3000/auth/signup",userform)
-      setsuccess(res.data.message)
-      setopen(true)
-      setTimeout(() => {
-        
-        navigate('/login')
-      }, 3000);
-   } catch (error:any) {
-    seterror(error.response.data.error)
-    setopen(true)
-   }
 
+    try {
+
+      await axios.post("http://localhost:3000/auth/sign-up",form)
+      setMessage({text:"you have registered successfully",type:"success"})  
+
+      setInterval(() => {
+        navigate("/login")    
+      }, 3000);
+      
+      
+    } catch (error:any) {
+      const errorMessage = error.response?.data?.message || "An error occurred!";
+      setMessage({ text: errorMessage, type: "error" });
+    }
+    finally{
+      setOpen(true)
+    }
     
-   }
+  }
+
+  const handleChange = async(e:React.ChangeEvent<HTMLInputElement>)=>{
+
+    setForm({...form,[e.target.name]:e.target.value})
+
+  }
+
+
 
   return (
     <Box
@@ -73,39 +79,39 @@ const Register = () => {
     <TextField
       label="email"
       name="email"
-      value={userform.email}
       required
-      onChange={handleChange}
       sx={{margin:"10px 0 "}}  
+      value={form.email}
+      onChange={handleChange}
       
       />
 
       <TextField
         label="username"
         name="username"
-        value={userform.username}
         required
-        onChange={handleChange}
         sx={{margin:"20px 0 "}}        
+        value={form.username}
+        onChange={handleChange}
       />
       <TextField
         label="password"
         name="password"
-        value={userform.password}
         required
-        onChange={handleChange}
         sx={{marginTop:"10px"}}
+        value={form.password}
+        onChange={handleChange}
         
         />
         <Button variant="contained" sx={{my:"20px" }} onClick={handleSubmit} >Create an Account</Button>
         <Divider sx={{ width: "80%", bgcolor: "white", my: 2 }} />
         <Typography color="white">Already have an account? <Link sx={{fontWeight:"bold"}} href="/login">Sign in</Link></Typography>
         </Box>
-        <Snackbar open={open} autoHideDuration={4000} onClose={() => setopen(false)}>
-        <Alert severity={error ? "error" : "success"} sx={{ width: "100%" }}>
-          {error || success}
+        <Snackbar autoHideDuration={4000} open={open} onClose={() => setOpen(false)}>
+        <Alert severity={message.type as "success" | "error"} sx={{ width: "100%" }}>
+           {message.text}
         </Alert>
-      </Snackbar>
+        </Snackbar>
     </Box>
   );
 };

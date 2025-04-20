@@ -1,0 +1,295 @@
+[
+  {
+    "id": "1",
+    "username": "yousef",
+    "email": "yousefsabry@wecare-eg.com",
+    "password": "$2b$10$bDZNW.BoMRMSlVtUXEGww.KC4rsIABA5DUgDkL8cqP8I8p.2tBElC",
+    "watchlist": [
+      {
+        "adult": false,
+        "backdrop_path": "/2Nti3gYAX513wvhp8IiLL6ZDyOm.jpg",
+        "genre_ids": [
+          10751,
+          35,
+          12,
+          14
+        ],
+        "id": 950387,
+        "original_language": "en",
+        "original_title": "A Minecraft Movie",
+        "overview": "Four misfits find themselves struggling with ordinary problems when they are suddenly pulled through a mysterious portal into the Overworld: a bizarre, cubic wonderland that thrives on imagination. To get back home, they'll have to master this world while embarking on a magical quest with an unexpected, expert crafter, Steve.",
+        "popularity": 990.9442,
+        "poster_path": "/yFHHfHcUgGAxziP1C3lLt0q2T4s.jpg",
+        "release_date": "2025-03-31",
+        "title": "A Minecraft Movie",
+        "video": false,
+        "vote_average": 6.132,
+        "vote_count": 359
+      },
+      {
+        "adult": false,
+        "backdrop_path": "/lqHt4icP1GTaNBeVTxTrwTZdoAW.jpg",
+        "genre_ids": [
+          28,
+          53,
+          9648,
+          80
+        ],
+        "id": 1195430,
+        "original_language": "hi",
+        "original_title": "देवा",
+        "overview": "Dev Ambre, a ruthless cop, loses his memory in an accident just after he has finished solving a murder case and now has to reinvestigate it while keeping his memory loss a secret from everyone except DCP Farhan Khan.",
+        "popularity": 353.3204,
+        "poster_path": "/4wKpglgZYMYpISMdThgdqS1TSQc.jpg",
+        "release_date": "2025-01-31",
+        "title": "Deva",
+        "video": false,
+        "vote_average": 5.432,
+        "vote_count": 22
+      },
+      {
+        "adult": false,
+        "backdrop_path": "/is9bmV6uYXu7LjZGJczxrjJDlv8.jpg",
+        "genre_ids": [
+          28,
+          12
+        ],
+        "id": 1229730,
+        "original_language": "fr",
+        "original_title": "Carjackers",
+        "overview": "By day, they're invisible—valets, hostesses, and bartenders at a luxury hotel. By night, they're the Carjackers, a crew of skilled drivers who track and rob wealthy clients on the road. As they plan their ultimate heist, the hotel director hires a ruthless hitman, to stop them at all costs. With danger closing in, can Nora, Zoe, Steve, and Prestance pull off their biggest score yet?",
+        "popularity": 297.0009,
+        "poster_path": "/wbkPMTz2vVai7Ujyp0ag7AM9SrO.jpg",
+        "release_date": "2025-03-27",
+        "title": "Carjackers",
+        "video": false,
+        "vote_average": 6.2,
+        "vote_count": 95
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "username": "omar",
+    "email": "k.omar.alsayed@gmail.com",
+    "password": "$2b$10$OJKuihniU29o3eACXfIMeOiLbeklcF0QuqjM8Nkp.HU6W12mNbJIO",
+    "watchlist": [
+      {
+        "adult": false,
+        "backdrop_path": "/is9bmV6uYXu7LjZGJczxrjJDlv8.jpg",
+        "genre_ids": [
+          28,
+          12
+        ],
+        "id": 1229730,
+        "original_language": "fr",
+        "original_title": "Carjackers",
+        "overview": "By day, they're invisible—valets, hostesses, and bartenders at a luxury hotel. By night, they're the Carjackers, a crew of skilled drivers who track and rob wealthy clients on the road. As they plan their ultimate heist, the hotel director hires a ruthless hitman, to stop them at all costs. With danger closing in, can Nora, Zoe, Steve, and Prestance pull off their biggest score yet?",
+        "popularity": 297.0009,
+        "poster_path": "/wbkPMTz2vVai7Ujyp0ag7AM9SrO.jpg",
+        "release_date": "2025-03-27",
+        "title": "Carjackers",
+        "video": false,
+        "vote_average": 6.2,
+        "vote_count": 95
+      },
+      {
+        "adult": false,
+        "backdrop_path": "/AlpDRp3Qaf2JvlQDzXS8kiYxTf8.jpg",
+        "genre_ids": [
+          28,
+          53
+        ],
+        "id": 1212855,
+        "original_language": "en",
+        "original_title": "Fight or Flight",
+        "overview": "A mercenary takes on the job of tracking down a target on a plane but must protect her when they're surrounded by people trying to kill both of them.",
+        "popularity": 197.3977,
+        "poster_path": "/x4nWnfgJvL045rcUCSJzfgIIY9i.jpg",
+        "release_date": "2025-04-03",
+        "title": "Fight or Flight",
+        "video": false,
+        "vote_average": 4.69,
+        "vote_count": 29
+      },
+      {
+        "adult": false,
+        "backdrop_path": "/k32XKMjmXMGeydykD32jfER3BVI.jpg",
+        "genre_ids": [
+          28,
+          9648,
+          18
+        ],
+        "id": 1045938,
+        "original_language": "en",
+        "original_title": "G20",
+        "overview": "After the G20 Summit is overtaken by terrorists, President Danielle Sutton must bring all her statecraft and military experience to defend her family and her fellow leaders.",
+        "popularity": 671.099,
+        "poster_path": "/tSee9gbGLfqwvjoWoCQgRZ4Sfky.jpg",
+        "release_date": "2025-04-09",
+        "title": "G20",
+        "video": false,
+        "vote_average": 6.507,
+        "vote_count": 70
+      },
+      {
+        "adult": false,
+        "backdrop_path": "/ce3prrjh9ZehEl5JinNqr4jIeaB.jpg",
+        "genre_ids": [
+          28,
+          53,
+          878
+        ],
+        "id": 822119,
+        "original_language": "en",
+        "original_title": "Captain America: Brave New World",
+        "overview": "After meeting with newly elected U.S. President Thaddeus Ross, Sam finds himself in the middle of an international incident. He must discover the reason behind a nefarious global plot before the true mastermind has the entire world seeing red.",
+        "popularity": 300.9673,
+        "poster_path": "/pzIddUEMWhWzfvLI3TwxUG2wGoi.jpg",
+        "release_date": "2025-02-12",
+        "title": "Captain America: Brave New World",
+        "video": false,
+        "vote_average": 6.111,
+        "vote_count": 1271
+      },
+      {
+        "adult": false,
+        "backdrop_path": "/ibF5XVxTzf1ayzZrmiJqgeQ39Qk.jpg",
+        "genre_ids": [
+          28,
+          10752
+        ],
+        "id": 1373723,
+        "original_language": "en",
+        "original_title": "The Codes of War",
+        "overview": "War stories about family, ethics and honor include the true story of two U.S. Marines who in a span of six seconds, must stand their ground to stop a suicide truck bomb, a Navy Corpsman who attempts to hold on to his humanity, and a WW2 soldier who gets separated from his squad and is forced to re-evaluate his code.",
+        "popularity": 217.6943,
+        "poster_path": "/oXeiQAfRK90pxxhP5iKPXQqAIN1.jpg",
+        "release_date": "2025-03-20",
+        "title": "The Codes of War",
+        "video": false,
+        "vote_average": 6.25,
+        "vote_count": 52
+      },
+      {
+        "adult": false,
+        "backdrop_path": "/fzv87rT0jlAkh5Uf9PpIlUj6Nj8.jpg",
+        "genre_ids": [
+          28,
+          53,
+          80
+        ],
+        "id": 1195585,
+        "original_language": "en",
+        "original_title": "The Hard Hit",
+        "overview": "An Interpol agent hunting the head of a global crime syndicate tracks his target to Las Vegas, but when the criminal organization kills his wife and daughter, he goes above the law to get his revenge.",
+        "popularity": 306.9282,
+        "poster_path": "/whkFbOZTamHeugEG95jvQehSzAH.jpg",
+        "release_date": "2023-10-20",
+        "title": "The Hard Hit",
+        "video": false,
+        "vote_average": 7.5,
+        "vote_count": 14
+      },
+      {
+        "adult": false,
+        "backdrop_path": "/2Nti3gYAX513wvhp8IiLL6ZDyOm.jpg",
+        "genre_ids": [
+          10751,
+          35,
+          12,
+          14
+        ],
+        "id": 950387,
+        "original_language": "en",
+        "original_title": "A Minecraft Movie",
+        "overview": "Four misfits find themselves struggling with ordinary problems when they are suddenly pulled through a mysterious portal into the Overworld: a bizarre, cubic wonderland that thrives on imagination. To get back home, they'll have to master this world while embarking on a magical quest with an unexpected, expert crafter, Steve.",
+        "popularity": 824.7134,
+        "poster_path": "/yFHHfHcUgGAxziP1C3lLt0q2T4s.jpg",
+        "release_date": "2025-03-31",
+        "title": "A Minecraft Movie",
+        "video": false,
+        "vote_average": 6.1,
+        "vote_count": 491
+      },
+      {
+        "adult": false,
+        "backdrop_path": "/gsQJOfeW45KLiQeEIsom94QPQwb.jpg",
+        "genre_ids": [
+          28,
+          53
+        ],
+        "id": 1125899,
+        "original_language": "en",
+        "original_title": "Cleaner",
+        "overview": "When a group of radical activists take over an energy company's annual gala, seizing 300 hostages, an ex-soldier turned window cleaner suspended 50 storeys up on the outside of the building must save those trapped inside, including her younger brother.",
+        "popularity": 259.8897,
+        "poster_path": "/mwzDApMZAGeYCEVjhegKvCzDX0W.jpg",
+        "release_date": "2025-02-19",
+        "title": "Cleaner",
+        "video": false,
+        "vote_average": 6.606,
+        "vote_count": 199
+      },
+      {
+        "adult": false,
+        "backdrop_path": "/zksO4lVnRKRoaSYzh2EDn2Z3Pel.jpg",
+        "genre_ids": [
+          37,
+          28
+        ],
+        "id": 1293286,
+        "original_language": "en",
+        "original_title": "Gunslingers",
+        "overview": "When the most wanted man in America surfaces in a small Kentucky town, his violent history -- and a blood-thirsty mob seeking vengeance and a king’s ransom -- soon follow. As brothers face off against one another and bullets tear the town to shreds, this lightning-fast gunslinger makes his enemies pay the ultimate price for their greed.",
+        "popularity": 444.7156,
+        "poster_path": "/O7REXWPANWXvX2jhQydHjAq2DV.jpg",
+        "release_date": "2025-04-11",
+        "title": "Gunslingers",
+        "video": false,
+        "vote_average": 5.3,
+        "vote_count": 9
+      },
+      {
+        "adult": false,
+        "backdrop_path": "/hNA73rnG4PjSwgojaC2gbO1f8Rt.jpg",
+        "genre_ids": [
+          878,
+          35,
+          12
+        ],
+        "id": 696506,
+        "original_language": "en",
+        "original_title": "Mickey 17",
+        "overview": "Unlikely hero Mickey Barnes finds himself in the extraordinary circumstance of working for an employer who demands the ultimate commitment to the job… to die, for a living.",
+        "popularity": 223.5184,
+        "poster_path": "/edKpE9B5qN3e559OuMCLZdW1iBZ.jpg",
+        "release_date": "2025-02-28",
+        "title": "Mickey 17",
+        "video": false,
+        "vote_average": 6.933,
+        "vote_count": 1478
+      },
+      {
+        "adult": false,
+        "backdrop_path": "/1w8kutrRucTd3wlYyu5QlUDMiG1.jpg",
+        "genre_ids": [
+          12,
+          10751,
+          16
+        ],
+        "id": 762509,
+        "original_language": "en",
+        "original_title": "Mufasa: The Lion King",
+        "overview": "Mufasa, a cub lost and alone, meets a sympathetic lion named Taka, the heir to a royal bloodline. The chance meeting sets in motion an expansive journey of a group of misfits searching for their destiny.",
+        "popularity": 177.2604,
+        "poster_path": "/lurEK87kukWNaHd0zYnsi3yzJrs.jpg",
+        "release_date": "2024-12-18",
+        "title": "Mufasa: The Lion King",
+        "video": false,
+        "vote_average": 7.426,
+        "vote_count": 1949
+      }
+    ]
+  }
+]

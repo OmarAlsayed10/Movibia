@@ -8,18 +8,24 @@ const theme = createTheme({
           backgroundColor: "rgb(212, 212, 212)",
           width: "60%",
           borderRadius: "5px",
+          '&.Mui-focusVisible': {
+            backgroundColor: "transparent",
+          }
           
         },
       },
     },
+    
     MuiInputBase: {
       styleOverrides: {
         root: {
             
-          height: "50px",
           display: "flex",
           alignItems: "center",
-          padding: "0 15px",
+          '& input:-webkit-autofill': {
+            WebkitBoxShadow: '0 0 0 1000px rgb(212, 212, 212) inset',
+          
+          },
           
         },
         input: {
@@ -32,12 +38,14 @@ const theme = createTheme({
         root: {
             border:"none",
           transition: "all 0.3s ease-in-out",
+          
         },
         shrink: {
           top: "-12px",
           left:"-10px",
           fontSize: "18px",
         },
+        
       },
     },
     MuiOutlinedInput:{
@@ -46,7 +54,49 @@ const theme = createTheme({
                 border:"none"
             }
         }
-    }
+    },
+    MuiMenuItem:{
+      styleOverrides:{
+        root:{
+          backgroundColor:"transparent",
+          transition:"none",
+          "&:hover":{
+            transition:"none",
+            backgroundColor:"transparent"
+          },
+          "&:active":{
+            transition:"none",
+            backgroundColor:"transparent"
+          },
+          '&.Mui-focusVisible': {
+            backgroundColor: "transparent",
+          }
+        }
+      },
+      defaultProps:{
+        disableRipple:true
+      }
+    },
+    MuiMenu:{
+      styleOverrides:{
+        root:{
+          backgroundColor:"transparent",
+          transition:"none",
+          "&:hover":{
+            transition:"none",
+            backgroundColor:"transparent"
+          },
+          "&:active":{
+            transition:"none",
+            backgroundColor:"transparent"
+          },
+          
+          
+        }
+      }
+    },
+   
+   
   },
 });
 

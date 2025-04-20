@@ -40,11 +40,6 @@
     transform: scale(1.01);
 }
 
-/* .active{
-    color: blue !important;
-} */
-
-
 .movie-card:hover .card-back{
     opacity: 1 !important;
 }

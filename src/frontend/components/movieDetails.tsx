@@ -1,10 +1,11 @@
 import {memo, useEffect, useState} from "react";
 import { useParams } from "react-router-dom";
-import Movie from "../utils/MovieInterface";
+import {Movie} from "../interfaces/interface";
 import { useDispatch, useSelector } from "react-redux";
 import { movieAction } from "../redux/slices/movieSlice";
 import { AppDispatch, RootState } from "../redux/store/store";
 import "./componentStyle.css"
+import { addToWatchList } from "../redux/slices/watchlistSlice";
 import { Button } from "@mui/material";
 
 
@@ -14,6 +15,17 @@ const MovieDetails = () => {
     
    const dispatch = useDispatch<AppDispatch>();
     const { movies } = useSelector((state:RootState) => state.movies);
+
+    
+    const userId = Number(localStorage.getItem("id"));
+    
+    const handleAdd = (movie:any)=>{
+        
+        if(userId){
+           dispatch(addToWatchList({userId:userId,movie}))
+        }
+
+    }
 
     useEffect(()=>{
         dispatch(movieAction())
@@ -26,7 +38,7 @@ const MovieDetails = () => {
     useEffect(()=>{
         if(movies.length>0){
 
-            const foundMovie = movies.find((m)=>m.id === Number(id) )
+            const foundMovie = movies.find((m:any)=>m.id === Number(id) )
             setmovie(foundMovie || null)
         }
     },[id,movies])
@@ -53,8 +65,9 @@ const MovieDetails = () => {
                 </div>
                 <p className="text-lg-start text-center">{movie.overview}</p>
                 <div className="d-flex gap-3 pt-4 justify-content-center justify-content-lg-start">
-                <Button variant="contained" color="primary" title='add to watch list'><i className='bi bi-bookmark-plus pe-2'></i>Add to Watch List</Button>
+                <Button onClick={()=>{ handleAdd(movie); }} variant="contained" color="primary" title='add to watch list'><i className='bi bi-bookmark-plus pe-2'></i>Add to Watch List</Button>
                 </div>
+                
             </div>
             </div>
         </div>
