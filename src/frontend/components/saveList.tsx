@@ -17,12 +17,11 @@ const SaveList = () => {
     }
   }, [dispatch]);
 
-  useEffect(()=>{
-
-    const storedId = localStorage.getItem("id")
-    const userId = Number(storedId)
-    dispatch(removeFromWatchList({userId,movieId}))
-},[dispatch])
+//   useEffect(()=>{
+//     const storedId = localStorage.getItem("id")
+//     const userId = Number(storedId)
+//     dispatch(removeFromWatchList({userId,movieId:movie.id}))
+// },[dispatch])
 
   return (
     <Container maxWidth="xl">
