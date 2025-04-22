@@ -3,7 +3,7 @@ const Abouthero = () => {
     return (
         <>
             <Container maxWidth="xl" sx={{height:"100vh",position:"absolute",top:"0"}}>
-                <img src="src/assets/images/about-hero.jpeg"
+                <Box component="img" src="src/assets/images/about-hero.jpeg"
                 style={{
                     position: "absolute",
                     top: "50%",
@@ -13,7 +13,7 @@ const Abouthero = () => {
                     height: "100%",
                     objectFit:"cover",
                 }}
-                ></img>
+                ></Box>
         <Box sx={{
             position:"absolute",
             top:0,

@@ -1,84 +1,149 @@
-import {memo, useEffect, useState} from "react";
+import { memo, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import {Movie} from "../interfaces/interface";
+import { Movie } from "../interfaces/interface";
 import { useDispatch, useSelector } from "react-redux";
 import { movieAction } from "../redux/slices/movieSlice";
 import { AppDispatch, RootState } from "../redux/store/store";
 import "./componentStyle.css"
 import { addToWatchList } from "../redux/slices/watchlistSlice";
-import { Button } from "@mui/material";
-
-
-
+import {
+  Box,
+  Button,
+  Typography,
+  Card,
+  CardMedia,
+  Chip,
+  Grid2
+} from "@mui/material";
 
 const MovieDetails = () => {
-    
-   const dispatch = useDispatch<AppDispatch>();
-    const { movies } = useSelector((state:RootState) => state.movies);
+  const dispatch = useDispatch<AppDispatch>();
+  const { movies } = useSelector((state: RootState) => state.movies);
+  const userId = Number(localStorage.getItem("id"));
 
-    
-    const userId = Number(localStorage.getItem("id"));
-    
-    const handleAdd = (movie:any)=>{
-        
-        if(userId){
-           dispatch(addToWatchList({userId:userId,movie}))
-        }
-
+  const handleAdd = (movie: any) => {
+    if (userId) {
+      dispatch(addToWatchList({ userId, movie }));
     }
+  };
 
-    useEffect(()=>{
-        dispatch(movieAction())
-    },[dispatch])
-    
-    const { id } = useParams();
- 
-    const [movie,setmovie]=useState<Movie|null>(null)
+  useEffect(() => {
+    dispatch(movieAction());
+  }, [dispatch]);
 
-    useEffect(()=>{
-        if(movies.length>0){
+  const { id } = useParams();
+  const [movie, setMovie] = useState<Movie | null>(null);
 
-            const foundMovie = movies.find((m:any)=>m.id === Number(id) )
-            setmovie(foundMovie || null)
-        }
-    },[id,movies])
+  useEffect(() => {
+    if (movies.length > 0) {
+      const foundMovie = movies.find((m: any) => m.id === Number(id));
+      setMovie(foundMovie || null);
+    }
+  }, [id, movies]);
 
-    if (!movies.length) return <h2 className="text-center text-white">Loading movies...</h2>;
-    if (!movie) return <h2 className="text-center text-white">Movie not found</h2>;
+  if (!movies.length)
+    return <Typography color="white" align="center">Loading movies...</Typography>;
+  if (!movie)
+    return <Typography color="white" align="center">Movie not found</Typography>;
 
-    return (
+  return (
+    <Box sx={{ px: 2, mt: 5}}>
+      <Grid2 container spacing={8} justifyContent="center" flexDirection="column" alignItems="center">
+        <Grid2 item xs={12} md={6}>
+          <Card
+            sx={{
+              backgroundColor: "#1c1c1c",
+              display: "flex",
+              justifyContent: "center",
+              p: 1,
+              width:"400px",
+              borderRadius: 3,
+            }}
+          >
+            <CardMedia
+              component="img"
+              sx={{ width:"400px",borderRadius:3 }}
+              image={`https://image.tmdb.org/t/p/w200/${movie.poster_path}`}
+              alt={movie.title}
+            />
+          </Card>
+        </Grid2>
 
-        <div className="container wrapper-container mt-5">
-           <div className="container wrapper-container" >
-            <div className="row p-5">
-            <div className="image-container col-md-6">
-                    <div className="image-card rounded-3 d-flex justify-content-center justify-content-lg-start">
-                    <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title} />
-                    </div>
-            </div>
-            <div className="col-md-6 text-white">
-                <h3 className="fs-1 text-lg-start text-center mt-4">{movie.title}</h3>
-                <div className="d-flex gap-2 py-4 justify-content-center justify-content-lg-start">
-                <small className=" text-white bg-secondary pt-1 px-2 pt-0 mt-2 h-100 pb-0 rounded-1">{movie.adult ? "NC-17" : "PG"}</small>
-                    <small className="text-white p-1 mt-2" title='release date'><i className='bi bi-calendar pe-2 text-danger'></i>{movie.release_date}</small>
-                    <small className="text-white p-1 mt-2" title='rate'><i className='bi bi-ticket-perforated-fill pe-2 text-warning'></i>{movie.vote_average}</small>
-                </div>
-                <p className="text-lg-start text-center">{movie.overview}</p>
-                <div className="d-flex gap-3 pt-4 justify-content-center justify-content-lg-start">
-                <Button onClick={()=>{ handleAdd(movie); }} variant="contained" color="primary" title='add to watch list'><i className='bi bi-bookmark-plus pe-2'></i>Add to Watch List</Button>
-                </div>
-                
-            </div>
-            </div>
-        </div>
-    
-            <div className="wrapper"></div>
-            </div>
-            
-   
-   
+        <Grid2 item xs={12} md={6} sx={{ color: "white",
+          textAlign: { xs: "center", md: "left" },
+          display: "flex",
+          flexDirection: "column",
+          alignItems: { xs: "center", md: "center" },
+          }}>
+          <Typography
+            variant="h3"
+            mt={2}
+          >
+            {movie.title}
+          </Typography>
 
-    );
-}
+          <Box
+            sx={{
+              display: "flex",
+              gap: 2,
+              py: 2,
+              justifyContent: { xs: "center", md: "flex-start" },
+              flexWrap: "wrap",
+            }}
+          >
+            <Chip
+              label={movie.adult ? "NC-17" : "PG"}
+              color="secondary"
+              size="small"
+            />
+            <Chip
+              label={
+                <>
+                  <i className="bi bi-calendar pe-2 text-danger"></i>
+                  {movie.release_date}
+                </>
+              }
+              sx={{ color: "white", backgroundColor: "#333" }}
+            />
+            <Chip
+              label={
+                <>
+                  <i className="bi bi-ticket-perforated-fill pe-2 text-warning"></i>
+                  {movie.vote_average}
+                </>
+              }
+              sx={{ color: "white", backgroundColor: "#333" }}
+            />
+          </Box>
+
+          <Typography
+            variant="body1"
+            sx={{ xs: "center", md: "left",my:2,width:"50%"}}
+           
+          >
+            {movie.overview}
+          </Typography>
+
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: { xs: "center", md: "flex-start" },
+              mt: 3,
+            }}
+          >
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={() => handleAdd(movie)}
+              startIcon={<i className="bi bi-bookmark-plus"></i>}
+            >
+              Add to Watch List
+            </Button>
+          </Box>
+        </Grid2>
+      </Grid2>
+    </Box>
+  );
+};
 
 export default memo(MovieDetails);

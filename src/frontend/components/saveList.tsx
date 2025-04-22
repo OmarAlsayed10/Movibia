@@ -1,32 +1,44 @@
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../redux/store/store";
-import { useEffect } from "react";
+import { memo, useEffect } from "react";
 import { getWatchList, removeFromWatchList } from "../redux/slices/watchlistSlice";
-import { Box, Card, CardActions, CardContent, CardMedia, Container, Link, Typography } from "@mui/material";
+import { Box, Card, CardActions, CardContent, CardMedia, CircularProgress, Container, Link, Typography } from "@mui/material";
 import DeleteIcon from '@mui/icons-material/Delete';
 
 const SaveList = () => {
   const dispatch = useDispatch<AppDispatch>();
   const watchlist = useSelector((state: RootState) => state.watchlist.items);
+  const loading = useSelector((state: RootState) => state.watchlist.loading);
+  const storedId = localStorage.getItem("id");
+  const userId = Number(storedId);
 
   useEffect(() => {
-    const storedId = localStorage.getItem("id");
     if (storedId) {
-      const userId = Number(storedId);
       dispatch(getWatchList({ userId }));
     }
   }, [dispatch]);
 
-//   useEffect(()=>{
-//     const storedId = localStorage.getItem("id")
-//     const userId = Number(storedId)
-//     dispatch(removeFromWatchList({userId,movieId:movie.id}))
-// },[dispatch])
+  const handleRemove = (movieId: number) => {
+    if (storedId) {
+      dispatch(removeFromWatchList({ userId, movieId }));
+    }
+  };
+
+if (loading) {
+   return (
+     <Container maxWidth="xl" sx={{ display: "flex", justifyContent: "center", mt: 10 }}>
+       <CircularProgress color="primary" />
+     </Container>
+   );
+ }
 
   return (
     <Container maxWidth="xl">
       {watchlist.length === 0 ? (
-        <Typography>No movies in watchlist</Typography>
+        <Box sx={{display:"flex" , flexDirection:"column",alignItems:"center",gap:"30px"}}>
+          <Typography variant="h4" color="white">No movies in watchlist</Typography>
+          <Typography color="white">Browse movies and begin your journey !</Typography>
+        </Box>
       ) : (
         <Box sx={{display:"flex",gap:"40px",flexWrap:"wrap"}}>
           {watchlist.map((movie) => (
@@ -38,7 +50,13 @@ const SaveList = () => {
             <Typography color="white">{movie.title}</Typography>
               </CardContent>
               <CardActions>
-              <DeleteIcon/>
+              <DeleteIcon
+              sx={{cursor: "pointer", color: "white"}} 
+              onClick={(e:any) => {
+                e.preventDefault();
+                handleRemove(movie.id);
+              }}
+              />
           </CardActions>
               </Box>
             <CardMedia
@@ -57,4 +75,4 @@ const SaveList = () => {
   );
 };
 
-export default SaveList;
+export default memo(SaveList);

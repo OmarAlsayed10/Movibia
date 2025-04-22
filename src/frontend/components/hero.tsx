@@ -13,7 +13,7 @@ const Hero = () => {
     return (
         <>
     <Container maxWidth="xl" sx={{height:"100vh",position:"relative",top:"-100px"}}>
-        <video
+        <Box component="video"
         autoPlay
         loop
         muted
@@ -29,7 +29,7 @@ const Hero = () => {
         }}
         >
             <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
-        </video>
+        </Box>
         <Box sx={{
             position:"absolute",
             top:0,

@@ -45,7 +45,7 @@ export const removeWatchlist:ExpressMiddleware=async (req,res)=>{
         return;
     }
 
-    user.watchlist = user.watchlist.filter((movie:any)=>movie.id!==movieId)
+    user.watchlist = user.watchlist.filter((movie:any)=>movie.id!=movieId)
 
     await saveUsers(users)
 

@@ -84,7 +84,6 @@ const Navbar = () => {
                  anchorEl={anchorEl}
                  open={open}
                  onClose={handleClose}
-                 disableScrollLock
                  >
                   <MenuItem sx={{display:"flex",gap:"20px"}}>
                     Welcome {localStorage.getItem("username")}

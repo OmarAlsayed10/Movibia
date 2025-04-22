@@ -10,13 +10,12 @@ const initialState: WatchlistState = {
   error: null,
 };
 
-export const addToWatchList = createAsyncThunk<Movie[], AddToWatchlistPayload>(
+export const addToWatchList =  createAsyncThunk<Movie[], AddToWatchlistPayload>(
   "watchlist/add",
   async ({ userId, movie }) => {
-    // console.log("User ID:", userId);
-    // console.log("Movie:", movie);      
+  
     const response = await axios.post(`http://localhost:3000/watchlist/${userId}`, { movie });
-    // console.log("Response Data:", response.data);
+  
     return response.data;
   }
 );
@@ -48,7 +47,8 @@ const watchlistSlice = createSlice({
         state.error = null;
       })
       .addCase(addToWatchList.fulfilled, (state, action: PayloadAction<Movie[]>) => {
-        state.items = action.payload;
+        const newMovies = action.payload.filter(m=>!state.items.some(i=>i.id===m.id));
+        state.items.push(...newMovies)
         state.loading = false;
       })
       .addCase(addToWatchList.rejected, (state, action) => {

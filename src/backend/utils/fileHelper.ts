@@ -5,14 +5,9 @@ import {User} from "../types/interfaces"
 const filePath = path.join(__dirname,"../database/users.json")
 export const loadUsers = async()=>{
 
-    try {
-
-        const data = await fs.readFile(filePath,"utf-8");
+    const data = await fs.readFile(filePath,"utf-8");
         return JSON.parse(data)
-       
-    } catch (error) {
-        return[]
-    }
+    
 }
 
 export const saveUsers = async(users:User[]):Promise<void>=>{
