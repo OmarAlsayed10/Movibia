@@ -5,7 +5,6 @@ import { ExpressMiddleware,SignUpRequest,SignInRequest, User }from "../types/int
 import { loadUsers, saveUsers } from "../utils/fileHelper";
 
 export const signUp:ExpressMiddleware = async(req:SignUpRequest,res,next)=>{   
-    
 
    try {
 
