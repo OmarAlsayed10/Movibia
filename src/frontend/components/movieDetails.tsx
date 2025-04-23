@@ -4,7 +4,6 @@ import { Movie } from "../interfaces/interface";
 import { useDispatch, useSelector } from "react-redux";
 import { movieAction } from "../redux/slices/movieSlice";
 import { AppDispatch, RootState } from "../redux/store/store";
-import "./componentStyle.css"
 import { addToWatchList } from "../redux/slices/watchlistSlice";
 import {
   Box,
@@ -93,26 +92,26 @@ const MovieDetails = () => {
           >
             <Chip
               label={movie.adult ? "NC-17" : "PG"}
-              color="secondary"
+              sx={{color:"white",p:2,backgroundColor:"rgb(14, 11, 30)"}}
               size="small"
             />
             <Chip
               label={
                 <>
-                  <i className="bi bi-calendar pe-2 text-danger"></i>
+                  <i className="bi bi-calendar pe-2"></i>
                   {movie.release_date}
                 </>
               }
-              sx={{ color: "white", backgroundColor: "#333" }}
+              sx={{ color: "white", backgroundColor: "rgb(14, 11, 30)" }}
             />
             <Chip
               label={
                 <>
-                  <i className="bi bi-ticket-perforated-fill pe-2 text-warning"></i>
+                  <i className="bi bi-ticket-perforated-fill pe-2"></i>
                   {movie.vote_average}
                 </>
               }
-              sx={{ color: "white", backgroundColor: "#333" }}
+              sx={{ color: "white", backgroundColor: "rgb(14, 11, 30)" }}
             />
           </Box>
 
@@ -133,7 +132,7 @@ const MovieDetails = () => {
           >
             <Button
               variant="contained"
-              color="primary"
+              sx={{backgroundColor:"orange"}}
               onClick={() => handleAdd(movie)}
               startIcon={<i className="bi bi-bookmark-plus"></i>}
             >

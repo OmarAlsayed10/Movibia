@@ -52,7 +52,7 @@ const Hero = () => {
         {!loggedIn ? (
         <Button variant="contained" color="primary"><Link underline="none" color="white" href="/signup">Sign up</Link></Button>
         ):(
-            <Button variant="contained" color="primary"><Link underline="none" color="white" href="/browse">Browse now</Link></Button>
+            <Button variant="contained" sx={{backgroundColor:"orange"}}><Link underline="none" color="white" href="/browse">Browse now</Link></Button>
         )
     }
         </Box>

@@ -1,96 +1,123 @@
-import { memo, useEffect, useRef, useState } from "react";
+import { forwardRef, useEffect, useRef, useState, useImperativeHandle } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { movieAction } from "../redux/slices/movieSlice";
 import { AppDispatch, RootState } from "../redux/store/store";
-import {Avatar, Box, Container, Typography, useMediaQuery } from "@mui/material";
-import ArrowRightIcon from '@mui/icons-material/ArrowRight';
-import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
-import {Movie} from "../interfaces/interface";
+import {
+  Box,
+  Card,
+  CardContent,
+  CardMedia,
+  Typography,
+} from "@mui/material";
+import { Movie } from "../interfaces/interface";
 
-const Movies = () => {
-    const dispatch = useDispatch<AppDispatch>();
-    const { movies } = useSelector((state:RootState) => state.movies);
-    const [hoveredItem , setHoveredItem] = useState<Number|null>(null)
-    const scrollRef = useRef<HTMLDivElement|null>(null)
-    const isMobile = useMediaQuery("(max-width:991px)") 
-
-    const scrollMovies = (direction:"left" | "right")=>{
-        if(scrollRef.current){
-            const scrollSteps = 1100
-            scrollRef.current.scrollBy({
-                left:direction==="left"? -scrollSteps:scrollSteps,
-                behavior:"smooth"
-            })
-        }
-    }
-
-    useEffect(() => {
-        dispatch(movieAction());
-    }, [dispatch]);
-
-    if (!movies) {
-        return <Typography>No movies available</Typography>;
-    }
-
-
-    return (
-        <>
-        <Container maxWidth="xl" sx={{position:"relative"}}>
-            
-            {!isMobile && (
-
-                <Box sx={{display:"flex", justifyContent:"end",gap:"20px"}}>
-
-                    <Avatar  sx={{cursor:"pointer",color:"black",backgroundColor:"white",zIndex:"10" ,width: 25,height: 25}}
-                        onClick={()=>scrollMovies("left")}
-                        >
-                            <ArrowLeftIcon/>
-                        </Avatar>
-                          <Avatar  sx={{cursor:"pointer",color:"black",backgroundColor:"white",zIndex:"10" ,width: 25,height: 25}}
-                          onClick={()=>scrollMovies("right")}
-                          >
-                         <ArrowRightIcon/>
-                              </Avatar>
-                              </Box>
-                        
-                    )}
-
-                
-                    
-
-            <Box className="d-flex flex-row movies-container position-relative " sx={{gap:"22px"}} ref={scrollRef}>
-                {movies.map((movie:Movie) => (
-                    <Box className="my-3 movie-card position-relative"
-                     key={movie.id}
-                     onMouseEnter={()=>setHoveredItem(movie.id)}
-                     onMouseLeave={()=>setHoveredItem(null)}
-                     >
-                        <Link to={`/movie/${movie.id}`} className="text-white text-decoration-none">
-                        <Box className="shadow-sm bg-black" sx={{ width: "10rem" }}>
-                            <Box component="img" sx={{width:"100%",height:"100%"}} src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title} />
-                        </Box>
-                        <Box 
-                                className="top-0 text-white"
-                                sx={{
-                                   
-                                    backgroundColor: "rgba(0, 0, 0, 0.7)",
-                                    opacity: hoveredItem === movie.id ? 1 : 0,
-                                    transition: "opacity 0.3s ease-in-out",
-                                }}
-                            >
-                               
-                            </Box>
-                            <Typography sx={{padding:"20px 0 20px 10px"}}>{movie.title}</Typography>
-                            
-                       
-                            </Link>
-                    </Box>
-                ))}
-            </Box>
-        </Container>
-        </>
-    );
+type Props = {
+  sortBy?: "popularity" | "release_date_desc" | "this_week";
 };
 
-export default memo(Movies);
+const Movies = forwardRef<HTMLDivElement, Props>(({ sortBy = "popularity" }, ref) => {
+  const dispatch = useDispatch<AppDispatch>();
+  const { movies } = useSelector((state: RootState) => state.movies);
+  const [hoveredItem, setHoveredItem] = useState<number | null>(null);
+  const scrollRef = useRef<HTMLDivElement | null>(null);
+
+  useImperativeHandle(ref, () => scrollRef.current!);
+
+  useEffect(() => {
+    dispatch(movieAction());
+  }, [dispatch]);
+
+  if (!movies) {
+    return <Typography>No movies available</Typography>;
+  }
+
+  let sortedMovies = [...movies];
+
+  if (sortBy === "popularity") {
+    sortedMovies.sort((a: Movie, b: Movie) => b.popularity - a.popularity);
+  } else if (sortBy === "release_date_desc") {
+    sortedMovies.sort(
+      (a: Movie, b: Movie) =>
+        new Date(b.release_date).getTime() - new Date(a.release_date).getTime()
+    );
+  } else if (sortBy === "this_week") {
+    const oneWeekAgo = new Date();
+    oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+    sortedMovies = sortedMovies
+      .filter((m: Movie) => new Date(m.release_date) >= oneWeekAgo)
+      .sort(
+        (a: Movie, b: Movie) =>
+          new Date(b.release_date).getTime() - new Date(a.release_date).getTime()
+      );
+  }
+
+  return (
+    <Box
+      ref={scrollRef}
+      sx={{
+        display: "flex",
+        flexDirection: "row",
+        overflowX: "auto",
+        gap: 3,
+        pb: 2,
+        scrollbarWidth: "none",
+        msOverflowStyle: "none",
+        "&::-webkit-scrollbar": {
+          display: "none",
+        },
+      }}
+    >
+      {sortedMovies.map((movie: Movie) => (
+        <Card
+          key={movie.id}
+          sx={{
+            width: 160,
+            backgroundColor: "black",
+            color: "white",
+            flex: "0 0 auto",
+            position: "relative",
+            transition: "transform 0.3s",
+            "&:hover": {
+              transform: "scale(1.05)",
+            },
+          }}
+          onMouseEnter={() => setHoveredItem(movie.id)}
+          onMouseLeave={() => setHoveredItem(null)}
+        >
+          <Link
+            to={`/movie/${movie.id}`}
+            style={{ textDecoration: "none", color: "inherit" }}
+          >
+            <CardMedia
+              component="img"
+              image={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+              alt={movie.title}
+              sx={{ height: 240 }}
+            />
+            <Box
+              sx={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                bgcolor: "rgba(0,0,0,0.6)",
+                opacity: hoveredItem === movie.id ? 1 : 0,
+                transition: "opacity 0.3s ease-in-out",
+              }}
+            />
+            <CardContent sx={{ p: 1.5 }}>
+              <Typography variant="body2" fontWeight="bold">
+                {movie.title}
+              </Typography>
+            </CardContent>
+          </Link>
+        </Card>
+      ))}
+    </Box>
+  );
+});
+
+export default Movies;
+

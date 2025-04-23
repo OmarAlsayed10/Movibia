@@ -6,6 +6,7 @@ export interface Movie {
         overview: string;
         adult: boolean;
         vote_average:number;
+        popularity:number;
     }
 
     export interface watchList{

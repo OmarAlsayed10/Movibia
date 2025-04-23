@@ -47,8 +47,9 @@ if (loading) {
             <Card sx={{display:"flex",justifyContent:"space-between",backgroundColor:"rgb(37, 37, 44)"}}>
               <Box sx={{display:"flex",flexDirection:"column",justifyContent:"space-between"}}>
               <CardContent>
-            <Typography color="white">{movie.title}</Typography>
-              </CardContent>
+            <Typography mb={2} variant="h6" color="white">{movie.title}</Typography>
+            
+            </CardContent>
               <CardActions>
               <DeleteIcon
               sx={{cursor: "pointer", color: "white"}} 

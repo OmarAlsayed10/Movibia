@@ -3,7 +3,29 @@
     "id": "1",
     "username": "yousef",
     "email": "yousefsabry@wecare-eg.com",
-    "password": "$2b$10$bDZNW.BoMRMSlVtUXEGww.KC4rsIABA5DUgDkL8cqP8I8p.2tBElC"
+    "password": "$2b$10$bDZNW.BoMRMSlVtUXEGww.KC4rsIABA5DUgDkL8cqP8I8p.2tBElC",
+    "watchlist": [
+      {
+        "adult": false,
+        "backdrop_path": "/fTrQsdMS2MUw00RnzH0r3JWHhts.jpg",
+        "genre_ids": [
+          28,
+          80,
+          53
+        ],
+        "id": 1197306,
+        "original_language": "en",
+        "original_title": "A Working Man",
+        "overview": "Levon Cade left behind a decorated military career in the black ops to live a simple life working construction. But when his boss's daughter, who is like family to him, is taken by human traffickers, his search to bring her home uncovers a world of corruption far greater than he ever could have imagined.",
+        "popularity": 1092.1175,
+        "poster_path": "/xUkUZ8eOnrOnnJAfusZUqKYZiDu.jpg",
+        "release_date": "2025-03-26",
+        "title": "A Working Man",
+        "video": false,
+        "vote_average": 6.32,
+        "vote_count": 386
+      }
+    ]
   },
   {
     "id": "2",
