@@ -29,7 +29,7 @@ const theme = createTheme({
           
         },
         input: {
-          fontSize: "18px",
+          fontSize: "14px",
         },
       },
     },

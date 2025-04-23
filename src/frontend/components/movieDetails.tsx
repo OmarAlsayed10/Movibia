@@ -12,17 +12,35 @@ import {
   Card,
   CardMedia,
   Chip,
+  Snackbar,
+  Alert,
   Grid2
 } from "@mui/material";
+
 
 const MovieDetails = () => {
   const dispatch = useDispatch<AppDispatch>();
   const { movies } = useSelector((state: RootState) => state.movies);
+  const { items: watchlist } = useSelector((state: RootState) => state.watchlist);
   const userId = Number(localStorage.getItem("id"));
 
+  const [movie, setMovie] = useState<Movie | null>(null);
+  const [snackOpen, setSnackOpen] = useState(false);
+  const [snackMessage, setSnackMessage] = useState("");
+  const [snackSeverity, setSnackSeverity] = useState<"success" | "info">("success");
+
   const handleAdd = (movie: any) => {
-    if (userId) {
+    const alreadyExists = watchlist.some((m) => m.id === movie.id);
+
+    if (alreadyExists) {
+      setSnackMessage("This movie is already in your watchlist.");
+      setSnackSeverity("info");
+      setSnackOpen(true);
+    } else if (userId) {
       dispatch(addToWatchList({ userId, movie }));
+      setSnackMessage("Movie added to your watchlist.");
+      setSnackSeverity("success");
+      setSnackOpen(true);
     }
   };
 
@@ -31,7 +49,6 @@ const MovieDetails = () => {
   }, [dispatch]);
 
   const { id } = useParams();
-  const [movie, setMovie] = useState<Movie | null>(null);
 
   useEffect(() => {
     if (movies.length > 0) {
@@ -46,8 +63,14 @@ const MovieDetails = () => {
     return <Typography color="white" align="center">Movie not found</Typography>;
 
   return (
-    <Box sx={{ px: 2, mt: 5}}>
-      <Grid2 container spacing={8} justifyContent="center" flexDirection="column" alignItems="center">
+    <Box sx={{ px: 2, mt: 5 }}>
+      <Grid2
+        container
+        spacing={8}
+        justifyContent="center"
+        flexDirection="column"
+        alignItems="center"
+      >
         <Grid2 item xs={12} md={6}>
           <Card
             sx={{
@@ -55,29 +78,32 @@ const MovieDetails = () => {
               display: "flex",
               justifyContent: "center",
               p: 1,
-              width:"400px",
+              width: "400px",
               borderRadius: 3,
             }}
           >
             <CardMedia
               component="img"
-              sx={{ width:"400px",borderRadius:3 }}
+              sx={{ width: "400px", borderRadius: 3 }}
               image={`https://image.tmdb.org/t/p/w200/${movie.poster_path}`}
               alt={movie.title}
             />
           </Card>
         </Grid2>
 
-        <Grid2 item xs={12} md={6} sx={{ color: "white",
-          textAlign: { xs: "center", md: "left" },
-          display: "flex",
-          flexDirection: "column",
-          alignItems: { xs: "center", md: "center" },
-          }}>
-          <Typography
-            variant="h3"
-            mt={2}
-          >
+        <Grid2
+          item
+          xs={12}
+          md={6}
+          sx={{
+            color: "white",
+            textAlign: { xs: "center", md: "left" },
+            display: "flex",
+            flexDirection: "column",
+            alignItems: { xs: "center", md: "center" },
+          }}
+        >
+          <Typography variant="h3" mt={2}>
             {movie.title}
           </Typography>
 
@@ -92,7 +118,7 @@ const MovieDetails = () => {
           >
             <Chip
               label={movie.adult ? "NC-17" : "PG"}
-              sx={{color:"white",p:2,backgroundColor:"rgb(14, 11, 30)"}}
+              sx={{ color: "white", p: 2, backgroundColor: "rgb(14, 11, 30)" }}
               size="small"
             />
             <Chip
@@ -117,8 +143,7 @@ const MovieDetails = () => {
 
           <Typography
             variant="body1"
-            sx={{ xs: "center", md: "left",my:2,width:"50%"}}
-           
+            sx={{ xs: "center", md: "left", my: 2, width: "50%" }}
           >
             {movie.overview}
           </Typography>
@@ -132,7 +157,7 @@ const MovieDetails = () => {
           >
             <Button
               variant="contained"
-              sx={{backgroundColor:"orange"}}
+              sx={{ backgroundColor: "orange" }}
               onClick={() => handleAdd(movie)}
               startIcon={<i className="bi bi-bookmark-plus"></i>}
             >
@@ -141,6 +166,21 @@ const MovieDetails = () => {
           </Box>
         </Grid2>
       </Grid2>
+
+      <Snackbar
+        open={snackOpen}
+        autoHideDuration={3000}
+        onClose={() => setSnackOpen(false)}
+        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+      >
+        <Alert
+          severity={snackSeverity}
+          onClose={() => setSnackOpen(false)}
+          sx={{ width: "100%" }}
+        >
+          {snackMessage}
+        </Alert>
+      </Snackbar>
     </Box>
   );
 };

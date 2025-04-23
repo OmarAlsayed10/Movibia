@@ -1,11 +1,11 @@
-import { Avatar, Box, Button, Link, Menu, MenuItem} from "@mui/material";
+import { Avatar, Box, Button, IconButton, Link, Menu, MenuItem} from "@mui/material";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../redux/store/store";
 import { fetchByEmail,handleLogOutstate } from "../redux/slices/userSlice";
 import { useNavigate } from "react-router-dom";
-import SearchIcon from '@mui/icons-material/Search';
 import LogoutIcon from '@mui/icons-material/Logout';
+import SearchBar from "./searchBar";
 
 const Navbar = () => {
 
@@ -63,18 +63,8 @@ const Navbar = () => {
             </ul>
             <Box sx={{display:"flex",alignItems:"center"}}>
 
-            <Avatar
-             sx={{width:"20px",
-             height:"20px",
-             background:"transparent",
-             fontSize:"15px",
-             cursor:"pointer" ,            
-             }}>
-              <SearchIcon/>
-              </Avatar>
-             
+           <SearchBar/>
 
-          
               { loggedIn ? (
                 <Box sx={{paddingLeft:"20px"}}>
               <Box>
@@ -110,6 +100,7 @@ const Navbar = () => {
           </div>
         </div>
       </nav>
+      
       </>
     );
 }

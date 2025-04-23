@@ -7,7 +7,7 @@ const Error = () => {
         <Typography color="white" align="center" width="50%">You may have mistyped the address or the page may be still under production.
              Let us take you to the main page and we can start all over again, shall we?</Typography>
         <Link underline="none" color="white" href="/">
-        <Button variant="contained" color="warning" >
+        <Button variant="contained" sx={{backgroundColor:"orange"}} >
                 Go Home
        </Button>
         </Link>
