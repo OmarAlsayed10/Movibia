@@ -102,9 +102,6 @@ const Movies = forwardRef<HTMLDivElement, Props>(({ sortBy = "popularity" }, ref
                 left: 0,
                 right: 0,
                 bottom: 0,
-                bgcolor: "rgba(0,0,0,0.6)",
-                opacity: hoveredItem === movie.id ? 1 : 0,
-                transition: "opacity 0.3s ease-in-out",
               }}
             />
             <CardContent sx={{ p: 1.5 }}>
