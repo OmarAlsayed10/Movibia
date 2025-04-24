@@ -71,7 +71,7 @@ import {
             elevation={4}
             sx={{
               position: "absolute",
-              top: "50px",
+              top: "40px",
               left: "-50%",
               width:"350px",
               backgroundColor: "rgb(25, 24, 29)",
@@ -104,15 +104,25 @@ import {
                       component="img"
                       image={`https://image.tmdb.org/t/p/w92${movie.poster_path}`}
                       alt={movie.title}
-                      sx={{ width: 80, objectFit: "cover"}}
+                      sx={{ width: 70, objectFit: "cover"}}
                     />
-                    <CardContent sx={{ padding: 1.5 }}>
+                    <CardContent sx={{ padding: 1 }}>
+                    <Box sx={{display:"flex",flexDirection:"column",gap:"5px"}}>
                       <Typography fontWeight="bold">{movie.title}</Typography>
-                      <Typography fontSize="0.85rem" color="text.white">
-                        PG: {movie.adult ? "18+" : "PG"} •{" "}
-                        Release: {movie.release_date || "N/A"} • ⭐{" "}
-                        {movie.vote_average?.toFixed(1) || "N/A"}
-                      </Typography>
+                    <Typography fontSize="0.85rem" color="text.white"> PG: {movie.adult ? "18+" : "PG"}</Typography>
+                       <Typography> Release: {movie.release_date || "N/A"}</Typography>
+                       <Typography
+                      variant="body2"
+                      sx={{
+                        backgroundColor: "orange",
+                        borderRadius: 1,
+                        width: "50px",
+                        pl: 1,
+                      }}
+                    >
+                      {movie.vote_average}
+                    </Typography>
+                    </Box>
                     </CardContent>
                   </Card>
                 ))}

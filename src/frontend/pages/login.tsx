@@ -64,8 +64,8 @@ const Login = () => {
       >
         <Box
         sx={{
-            width:"50%",
-            height:"100%",
+          width:{xs:"90%",sm:"70%",md:"50%",lg:"40%"},
+            height:"80%",
            background: "rgba(0, 0, 0, 0.5)",backdropFilter:"blur(10px)",borderBottom:"1px solid (255,255,255,0.1)",
                 display: "flex",
             flexDirection:"column",

@@ -55,14 +55,15 @@ const Register = () => {
       sx={{
         display: "flex",
         flexDirection:"column",
-        justifyContent: "center",
         alignItems: "center",
-        height:"80vh",   
+        height:"70vh",
+        marginTop:"40px"
+           
       }}
       >
         <Box
         sx={{
-            width:"50%",
+            width:{xs:"90%",sm:"70%",md:"50%",lg:"40%"},
             height:"100%",
            background: "rgba(0, 0, 0, 0.5)",backdropFilter:"blur(10px)",borderBottom:"1px solid (255,255,255,0.1)",
                 display: "flex",
@@ -70,6 +71,7 @@ const Register = () => {
             paddingTop:"40px",
             alignItems: "center",
             borderRadius:"20px"
+
 
         }}>
 
