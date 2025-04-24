@@ -32,7 +32,7 @@ const TopTrending = () => {
         backgroundColor: "rgb(17, 16, 20)",
         py: 4,
         borderRadius: 5,
-        px: { xs: 2, sm: 3, md: 5 },
+        px: { xs: 2, sm: 2, md: 2 },
       }}
     >
       <Typography
@@ -49,7 +49,7 @@ const TopTrending = () => {
           <Link
             key={movie.id}
             to={`/movie/${movie.id}`}
-            style={{ textDecoration: "none", color: "inherit" }}
+            style={{ textDecoration: "none", color: "inherit",width:"auto" }}
           >
             <Card
               onMouseEnter={() => setHovered(movie.id)}
@@ -62,7 +62,7 @@ const TopTrending = () => {
                 backgroundColor: "rgb(25, 24, 29)",
                 color: "white",
                 borderRadius: 3,
-                width: "100%",
+                width:"100%",
                 maxWidth: 600,
                 mx: "auto",
                 height: { xs: "auto", sm: 150 },

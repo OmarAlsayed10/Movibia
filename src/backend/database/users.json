@@ -7,23 +7,105 @@
     "watchlist": [
       {
         "adult": false,
-        "backdrop_path": "/op3qmNhvwEvyT7UFyPbIfQmKriB.jpg",
+        "backdrop_path": "/jhL4eTpccoZSVehhcR8DKLSBHZy.jpg",
         "genre_ids": [
+          28,
+          53,
+          878
+        ],
+        "id": 822119,
+        "original_language": "en",
+        "original_title": "Captain America: Brave New World",
+        "overview": "After meeting with newly elected U.S. President Thaddeus Ross, Sam finds himself in the middle of an international incident. He must discover the reason behind a nefarious global plot before the true mastermind has the entire world seeing red.",
+        "popularity": 376.8807,
+        "poster_path": "/pzIddUEMWhWzfvLI3TwxUG2wGoi.jpg",
+        "release_date": "2025-02-12",
+        "title": "Captain America: Brave New World",
+        "video": false,
+        "vote_average": 6.1,
+        "vote_count": 1591
+      },
+      {
+        "adult": false,
+        "backdrop_path": "/sNx1A3822kEbqeUxvo5A08o4N7o.jpg",
+        "genre_ids": [
+          28,
+          35,
+          53
+        ],
+        "id": 1195506,
+        "original_language": "en",
+        "original_title": "Novocaine",
+        "overview": "When the girl of his dreams is kidnapped, everyman Nate turns his inability to feel pain into an unexpected strength in his fight to get her back.",
+        "popularity": 307.4463,
+        "poster_path": "/xmMHGz9dVRaMY6rRAlEX4W0Wdhm.jpg",
+        "release_date": "2025-03-12",
+        "title": "Novocaine",
+        "video": false,
+        "vote_average": 6.862,
+        "vote_count": 564
+      },
+      {
+        "adult": false,
+        "backdrop_path": "/k32XKMjmXMGeydykD32jfER3BVI.jpg",
+        "genre_ids": [
+          28,
+          9648,
+          18
+        ],
+        "id": 1045938,
+        "original_language": "en",
+        "original_title": "G20",
+        "overview": "After the G20 Summit is overtaken by terrorists, President Danielle Sutton must bring all her statecraft and military experience to defend her family and her fellow leaders.",
+        "popularity": 337.4409,
+        "poster_path": "/wv6oWAleCJZUk5htrGg413t3GCy.jpg",
+        "release_date": "2025-04-09",
+        "title": "G20",
+        "video": false,
+        "vote_average": 6.676,
+        "vote_count": 350
+      },
+      {
+        "adult": false,
+        "backdrop_path": "/wmqpE7p2dUCEgCnovuovoNXaCXr.jpg",
+        "genre_ids": [
+          27,
           14,
-          12,
+          53,
+          9648,
           28
         ],
-        "id": 324544,
+        "id": 1353117,
         "original_language": "en",
-        "original_title": "In the Lost Lands",
-        "overview": "A queen sends the powerful and feared sorceress Gray Alys to the ghostly wilderness of the Lost Lands in search of a magical power, where she and her guide, the drifter Boyce, must outwit and outfight both man and demon.",
-        "popularity": 546.4711,
-        "poster_path": "/t6HJH3gXtUqVinyFKWi7Bjh73TM.jpg",
-        "release_date": "2025-02-27",
-        "title": "In the Lost Lands",
+        "original_title": "Home Sweet Home: Rebirth",
+        "overview": "When a city is overrun with a demonically-possessed crowd, a cop must find the source of evil to save his family.",
+        "popularity": 150.5279,
+        "poster_path": "/9rCBCm9cyI4JfLEhx3EncyncMR3.jpg",
+        "release_date": "2025-03-20",
+        "title": "Home Sweet Home: Rebirth",
         "video": false,
-        "vote_average": 6.32,
-        "vote_count": 261
+        "vote_average": 6.693,
+        "vote_count": 44
+      },
+      {
+        "adult": false,
+        "backdrop_path": "/cJCW78MZsyyXBKHo4V25WctK00V.jpg",
+        "genre_ids": [
+          27,
+          28,
+          14
+        ],
+        "id": 1312833,
+        "original_language": "en",
+        "original_title": "A Knight's War",
+        "overview": "A fearless knight braves a deadly realm to save the Chosen One’s soul. Facing witches, demons, and brutal foes, he discovers her return could ignite chaos and doom humanity.",
+        "popularity": 153.5549,
+        "poster_path": "/janjdSMrTRGtPrI1p9uOX66jv7x.jpg",
+        "release_date": "2025-02-07",
+        "title": "A Knight's War",
+        "video": false,
+        "vote_average": 5.4,
+        "vote_count": 15
       }
     ]
   },

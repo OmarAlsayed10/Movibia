@@ -1,4 +1,4 @@
-import {Button, Container, Link, Typography } from "@mui/material"
+import {Box, Button, Container, Link, Typography } from "@mui/material"
 
 const Error = () => {
     return (
@@ -11,12 +11,15 @@ const Error = () => {
                 Go Home
        </Button>
         </Link>
-       <img src="src/assets/images/maintaince.png"
-                style={{
-                width:"30%",
-                
-                }}
-                ></img>
+        <Box
+        component="img"
+        src="src/assets/images/maintaince.png"
+        alt="maintenance"
+        sx={{
+          width: { xs: "80%", sm: "60%", md: "40%", lg: "30%" },
+          maxWidth: "500px",
+        }}
+      />
        
         </Container>
     );

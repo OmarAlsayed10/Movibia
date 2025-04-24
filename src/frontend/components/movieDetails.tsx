@@ -66,7 +66,7 @@ const MovieDetails = () => {
     <Box sx={{ px: 2, mt: 5 }}>
       <Grid2
         container
-        spacing={8}
+        spacing={2}
         justifyContent="center"
         flexDirection="column"
         alignItems="center"
@@ -78,13 +78,13 @@ const MovieDetails = () => {
               display: "flex",
               justifyContent: "center",
               p: 1,
-              width: "400px",
+              width: "300px",
               borderRadius: 3,
             }}
           >
             <CardMedia
               component="img"
-              sx={{ width: "400px", borderRadius: 3 }}
+              sx={{ width: "300px", borderRadius: 3 }}
               image={`https://image.tmdb.org/t/p/w200/${movie.poster_path}`}
               alt={movie.title}
             />
@@ -103,7 +103,7 @@ const MovieDetails = () => {
             alignItems: { xs: "center", md: "center" },
           }}
         >
-          <Typography variant="h3" mt={2}>
+          <Typography variant="h3">
             {movie.title}
           </Typography>
 
